@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --green: #2ecc71;
+  --red: #c0392b;
+  --orange: #e67e22;
+  --blue: #3498db;
+  --yellow: #f1c40f;
+  --grey: #98a0a5;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+h1 {
+  color: #333;
+}
+.cursors,
+canvas {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+canvas {
+  z-index: 1;
+}
+.cursors {
+  z-index: 2;
+}
+.cursors > .cursor {
+  --size-x: 2.5rem;
+  --size-y: 0.35rem;
+  width: var(--size-x);
+  height: var(--size-y);
+  top: -5rem;
+  left: -5rem;
+}
+.cursors > .cursor:before {
+  content: '';
+  height: var(--size-x);
+  width: var(--size-y);
+  left: 50%;
+  top: 50%;
+}
+.cursors > .cursor,
+.cursors > .cursor:before {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.cursors > .cursor:nth-child(1),
+.cursors > .cursor:nth-child(1):before {
+  background-color: var(--blue);
+}
+.cursors > .cursor:nth-child(2),
+.cursors > .cursor:nth-child(2):before {
+  background-color: var(--orange);
+}
+.cursors > .cursor:nth-child(3),
+.cursors > .cursor:nth-child(3):before {
+  background-color: var(--green);
+}
+.cursors > .cursor:nth-child(4),
+.cursors > .cursor:nth-child(4):before {
+  background-color: var(--red);
+}
+
+.bottom,
+.logo {
+  position: fixed;
+  bottom: 0;
+  height: 4rem;
+  padding: 1rem 1.5rem;
+  zoom: 90%;
+}
+.bottom {
+  right: 0;
+}
+.bottom > *.active {
+  transform: scale(1.05);
+}
+.btns {
+  zoom: 90%;
+}
+.btns > * {
+  height: 2rem;
+  line-height: 2rem;
+  margin-left: 1.5rem;
+  transition: transform 0.2s;
+}
+.btns * {
+  display: inline-block;
+  vertical-align: middle;
+  color: var(--theme);
+}
+.btns span {
+  font-size: 90%;
+  color: #fff !important;
+  border-radius: 10000px;
+  padding: 0 0.65rem;
+  height: 1.5rem;
+  line-height: 1.66rem;
+  margin-right: 0.15rem;
+  background-color: var(--theme);
+}
+.logo {
+  left: 0;
+}
+.logo * {
+  display: block;
+  float: left;
+  height: 2rem;
+  line-height: 2rem;
+  width: auto;
+  font-size: 1.25rem;
+}
+.logo img {
+  margin-right: 0.75rem;
+}
+
+.modal {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.5);
+  left: 0;
+  top: 0;
+  transition: background-color 0.25s;
+}
+.modal:not(.active) {
+  background-color: transparent;
+}
+.modal .inner {
+  width: 700px;
+  max-width: 100%;
+  min-height: 700px;
+  max-height: 100vh;
+  padding: 2.5rem;
+  padding-bottom: 4rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.25s, opacity 0.25s;
+}
+.modal:not(.active) .inner {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.05);
+}
+.modal .inner > h1 {
+  text-align: center;
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+.modal .inner .btns {
+  position: absolute;
+  bottom: 1rem;
+  right: 1.5rem;
+}
+
+.modal .cols {
+  display: flex;
+}
+.modal .cols > * {
+  flex: 1 1 100%;
+}
+.modal .cols > *:not(:last-child) {
+  margin-right: 2rem;
+}
+.modal .cols > * > div {
+  border: 2px solid var(--theme);
+  color: var(--theme);
+  padding: 0.5rem;
+  padding-left: 2.75rem;
+  position: relative;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 400;
+  webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: color 0.2s;
+  text-transform: capitalize;
+}
+.modal .cols > * > div.hovered,
+.modal .cols > * > div.active {
+  color: #fff;
+}
+.modal .cols > * > div:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--theme);
+  transition: width 0.2s;
+  z-index: -1;
+}
+.modal.change-color .cols > * > div:after {
+  width: 2.15rem;
+}
+.modal .cols > * > div.hovered:after,
+.modal .cols > * > div.active:after {
+  width: 100%;
+}
+.modal .cols > * > div.active:before {
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M9 21.035l-9-8.638 2.791-2.87 6.156 5.874 12.21-12.436 2.843 2.817z'/%3E%3C/svg%3E");
+  background-size: 65%;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  left: 0.5rem;
+  line-height: 1.25rem;
+  height: 1.25rem;
+  width: 1.25rem;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  border: 2px solid #000;
+  filter: invert(1);
+  font-size: 0.75rem;
+}
+.modal .cols > * > div:not(:last-child) {
+  margin-bottom: 0.25rem;
+}
+.modal.active ~ .cursors {
+  display: none;
+}
+
+.desc {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.desc h2 {
+  font-size: 1.75rem;
+}
+.desc p {
+  font-size: 1rem;
+  opacity: 0.5;
+  margin-top: 0.5rem;
+}

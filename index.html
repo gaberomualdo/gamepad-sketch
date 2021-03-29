@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gamepad Testing</title>
+
+    <link rel="stylesheet" href="main.css" />
+    <link rel="shortcut icon" href="icon.png" />
+  </head>
+  <body>
+    <div class="desc">
+      <h2>Connect and Activate a Gamepad to Get Started</h2>
+      <p>You may have click a couple of gamepad buttons for the gamepad to be recognized.</p>
+    </div>
+    <div class="logo">
+      <img src="icon.png" alt="Logo" />
+      <h1>GamepadSketch</h1>
+    </div>
+    <canvas class="canvas"></canvas>
+    <ul class="bottom btns">
+      <li style="--theme: var(--green)">
+        <span>lt</span>
+        <strong>Draw</strong>
+      </li>
+      <li style="--theme: var(--red)" class="force-perpendicular">
+        <span>rt</span>
+        <strong>Force Perpendicular</strong>
+      </li>
+      <li style="--theme: var(--orange)" class="clear-canvas">
+        <span>lb + rb</span>
+        <strong>Clear</strong>
+      </li>
+      <li style="--theme: var(--blue)">
+        <span>x</span>
+        <strong>Change Color</strong>
+      </li>
+      <li style="--theme: var(--yellow)">
+        <span>y</span>
+        <strong>Change Thickness</strong>
+      </li>
+      <li style="--theme: var(--grey)">
+        <span>menu</span>
+        <strong>Download Drawing</strong>
+      </li>
+    </ul>
+    <div class="change-color modal">
+      <div class="inner">
+        <h1>Change Color</h1>
+        <div class="cols"></div>
+        <ul class="btns">
+          <li style="--theme: var(--green)">
+            <span>a</span>
+            <strong>Select Color</strong>
+          </li>
+          <li style="--theme: var(--red)">
+            <span>b</span>
+            <strong>Go Back</strong>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="change-thickness modal">
+      <div class="inner">
+        <h1>Change Thickness</h1>
+        <div class="cols"></div>
+        <ul class="btns">
+          <li style="--theme: var(--green)">
+            <span>a</span>
+            <strong>Select Thickness</strong>
+          </li>
+          <li style="--theme: var(--red)">
+            <span>b</span>
+            <strong>Go Back</strong>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="cursors">
+      <div class="cursor"></div>
+      <div class="cursor"></div>
+      <div class="cursor"></div>
+      <div class="cursor"></div>
+    </div>
+
+    <script src="util.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
